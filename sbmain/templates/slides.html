@@ -1,0 +1,47 @@
+{% extends "withmenu.html" %}
+{% block scripts %}
+<!-- Core + Skin CSS -->   
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/carousel/assets/skins/sam/carousel.css">  
+ 
+<!-- Dependencies -->   
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>  
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>  
+ 
+<!-- Optional: Animation library for animating the scrolling of items -->   
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script>  
+<!-- Optional: Connection library for dynamically loading items -->   
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/connection/connection-min.js"></script>  
+ 
+<!-- Source file -->   
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/carousel/carousel-beta-min.js"></script>
+
+
+{% endblock %}
+
+{% block content %}
+    <!-- The Carousel container -->
+    <div id="container" class="yui-skin-sam">
+        <ol id="carousel">
+          {% for imageref in images %}
+            <li>
+                <img src="/media/sb/{{ gallery.path }}/{{ imageref.filename }}"
+                 height="600" width="800">
+            </li>
+          {% endfor %}
+        </ol>
+    </div>
+    <script>
+    (function () {
+        var carousel;
+                
+        YAHOO.util.Event.onDOMReady(function (ev) {
+            var carousel    = new YAHOO.widget.Carousel("container", {
+                        isCircular: true, numVisible: 1
+                });
+
+            carousel.render(); // get ready for rendering the widget
+            carousel.show();   // display the widget
+        });
+    })();
+    </script>
+{% endblock %}

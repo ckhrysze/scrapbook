@@ -1,0 +1,13 @@
+{% extends "withmenu.html" %}
+{% block content %}
+<div class="exhibit">
+    <div class="gallery">
+      <div class="gallery_name">{{ gallery.name }}</div>
+      {% for imageref in gallery.imageref_set.all %}
+        <a href="/media/sb/{{ gallery.path }}/{{ imageref.filename }}"><img
+          src="/media/sb/{{ gallery.path }}/{{ imageref.filename }}" alt="{{ imageref.name }}"
+          width="50" height="50" /></a>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

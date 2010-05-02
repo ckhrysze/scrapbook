@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+  <span class="large">Welcome to my site, {{ user.first_name }}!</span>
+  {% block menu %}
+  <ul id="mainmenu">
+    <li><a href="/landing">Home</a></li>
+    <li><a href="/blog">Baby Blog</a></li>
+    <li><a href="/galleries">Photo Galleries</a></li>
+    <li><a href="/portraits">Portraits</a></li>
+    <li><a href="/videos">Videos</a></li>
+  </ul>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  {% endblock %}
+{% endblock %}

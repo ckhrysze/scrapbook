@@ -1,0 +1,12 @@
+{% extends "withmenu.html" %}
+{% block content %}
+<div class="exhibit">
+  {% for gallery in galleries %}
+    <div class="gallery">
+      <a href="{{ gallery_type }}/{{ gallery.id }}/">
+	<span class="gallery_name">{{ gallery.name }}</span>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

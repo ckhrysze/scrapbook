@@ -1,0 +1,14 @@
+{% extends "withmenu.html" %}
+{% block content %}
+<div class="videos">
+  <ul>
+    {% for videoref in videos %}
+      <li><a href="/media/sb/video_first_year/{{ videoref.filename }}">
+        {{ videoref.desc }}
+      </a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+

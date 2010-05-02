@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="large">Welcome to my site!</div>
+<div style="margin-top: 100px">
+  My dad is a little paranoid about people on the internet, so he's making
+  people log in before they can see me.
+</div>
+<div style="margin-top: 10px;">
+  <div class="error">{{ error }}</div>
+  <form action="/login" method="post" id="login_form" name="login_form">
+    <input type="hidden" name="next" value="{{ next }}" />
+    <table>
+      <colgroup span="2">
+          <col width="50%" style="50%" />
+      </colgroup>
+      <tr>
+          <td class="textright"><label for="user">Username:</label></td>
+          <td class="textleft"><input type="text" name="user" id="user" /></td>
+      </tr>
+      <tr>
+          <td class="textright"><label for="pass">Password:</label></td>
+          <td class="textleft"><input type="password" name="pass" id="pass" /></td>
+      </tr>
+      <tr>
+          <td colspan="2"><input type="submit" name="submit" value="Submit" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+{% endblock %}

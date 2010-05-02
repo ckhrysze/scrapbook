@@ -1,0 +1,39 @@
+{% extends "withbriefmenu.html" %}
+
+{% block styles %}
+<link href="/static/style/galleria.css" rel="stylesheet" type="text/css" media="screen">
+<link href="/static/style/demo.css" rel="stylesheet" type="text/css" media="screen">
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/static/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.galleria.js"></script>
+<script type="text/javascript">
+      
+  jQuery(function($) {
+      
+      $('.gallery_demo_unstyled').addClass('gallery_demo'); // adds new class name to maintain degradability
+      
+      $('ul.gallery_demo').galleria({
+      history   : false, // deactivates the history object for bookmarking, back-button etc.
+      clickNext : false, // helper for making the image clickable. Let's not have that in this example.
+      insert    : undefined, // the containing selector for our main image. 
+      // If not found or undefined (like here), galleria will create a container 
+      // before the ul with the class .galleria_container (see CSS)
+      onImage   : function() { $('.nav').css('display','block'); } // shows the nav when the image is showing
+      });
+  });
+      
+</script>
+{% endblock %}    
+
+{% block content %}
+    <div class="demo">
+      <ul class="gallery_demo_unstyled">
+	{% for imageref in gallery.portraitref_set.all %}
+	<li><img src="/media/sb/{{ gallery.path }}/{{ imageref.filename }}"
+		 alt="{{ imageref.name }}"/></li>
+	{% endfor %}
+      </ul>
+    </div>
+{% endblock %}

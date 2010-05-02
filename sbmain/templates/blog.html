@@ -1,0 +1,9 @@
+{% extends "withmenu.html" %}
+{% block content %}
+  {% for entry in blog_entries %}
+    <div class="blogentry">
+      <div class="entrytime">{{ entry.time|date:"F d" }}, {{ entry.time|time:"h:i:s A" }}</div>
+      <div class="entrytext">{{ entry.entry|linebreaks }}</div>
+    </div>
+  {% endfor %}
+{% endblock %}
